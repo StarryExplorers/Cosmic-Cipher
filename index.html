@@ -1,0 +1,106 @@
+<!-- Cosmic Cipher - index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Cipher</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Courier New', monospace;
+      background: radial-gradient(circle at top, #111, #000);
+      color: lime;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      padding: 1rem;
+      background: #0f0f0f;
+      text-align: center;
+      font-size: 1.5rem;
+      border-bottom: 2px solid lime;
+    }
+    main {
+      flex: 1;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    button {
+      background: black;
+      color: lime;
+      border: 2px solid lime;
+      padding: 0.7rem 1.5rem;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .code-box, .decode-box {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      border: 2px dashed lime;
+      border-radius: 10px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      background: #0f0f0f;
+    }
+  </style>
+</head>
+<body>
+  <header>👽 Cosmic Cipher</header>
+  <main>
+    <div class="code-box" id="codeBox">Press below to receive a signal...</div>
+    <button onclick="generateSignal()">🛸 Receive Signal</button>
+    <div class="decode-box" id="decodeBox">Then decode the alien message here!</div>
+    <button onclick="decodeSignal()">🔍 Decode</button>
+  </main>
+  <div class="footer">Made by Spark 👑 & Nova 🌟</div>
+
+  <script>
+    let currentSignal = '';
+    const messages = [
+      "Prepare for intergalactic pizza rain 🍕🌌",
+      "Transmission from Zog: Bring chocolate",
+      "Earth is interesting. Keep observing. 🪐",
+      "Alien school just started on Planet Zorp.",
+      "White holes are not restrooms, beware!",
+      "Your spaceship is upside down 🛸😂",
+      "Teleportation successful... oh wait...",
+      "We hear your music. It's... weird. 🎶👂",
+    ];
+
+    function generateSignal() {
+      const randomCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+      currentSignal = randomCode;
+      document.getElementById('codeBox').innerText = `Alien Signal: ${randomCode}`;
+      document.getElementById('decodeBox').innerText = 'Now decode it...';
+    }
+
+    function decodeSignal() {
+      if (currentSignal === '') {
+        document.getElementById('decodeBox').innerText = 'Receive a signal first!';
+        return;
+      }
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('decodeBox').innerText = `Decoded Message: ${msg}`;
+    }
+  </script>
+</body>
+</html>
